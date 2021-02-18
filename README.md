@@ -27,7 +27,7 @@ has_many :orders
 | product_explain  | text          | null: false |
 | price            | integer       | null: false |
 | category_id      | integer       | null: false |
-| condition_id     | integer        | null: false |
+| condition_id     | integer       | null: false |
 | consignor_area_id| integer       | null: false |
 | deliver_fee_id   | integer       | null: false |
 | prepare_date_id  | integer       | null: false |
@@ -45,12 +45,12 @@ has_one :order
 | Column                        | Type       | Options      |
 | ----------------------------- | ---------- | ------------ |
 | post_code                     | string     | null: false  |
-| consignor_area_id             | reference  | null: false  |
+| consignor_area_id             | integer    | null: false  |
 | city_town                     | string     | null: false  |
 | number                        | string     | null: false  |
 | building_name                 | string     |              |
 | phone_number                  | string     | null: false  |
-| order                         | reference  |null: false, foreign_key: true |
+| order                         | references  |null: false, foreign_key: true |
 
 
 ### Association
@@ -63,8 +63,8 @@ belongs_to :order
 
 | Column                        | Type       | Options                      |
 | ----------------------------- | ---------- | ---------------------------- |
-| user                          | reference  |null: false, foreign_key: true|
-| product                       | reference  |null: false, foreign_key: true|
+| user                          | references  |null: false, foreign_key: true|
+| product                       | references  |null: false, foreign_key: true|
 
 ### Association
 belongs_to :user
