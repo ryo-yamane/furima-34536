@@ -7,8 +7,8 @@
 | nickname           | string     | null: false |
 | first_name         | string     | null: false |
 | last_name          | string     | null: false |
-| first_name_kana   | string     | null: false |
-| last_name_kana    | string     | null: false |
+| first_name_kana    | string     | null: false |
+| last_name_kana     | string     | null: false |
 | email              | string     | null: false , unique: true|
 | encrypted_password | string     | null: false |
 | birthday           | date       | null: false |
@@ -26,12 +26,11 @@ has_many :orders
 | product_name     | string        | null: false |
 | product_explain  | text          | null: false |
 | price            | integer       | null: false |
-| category         | string        | null: false |
-| brand            | string        | null: false |
+| category_id      | integer       | null: false |
 | condition_id     | string        | null: false |
 | consignor_area_id| string        | null: false |
-| deliver_fee_id   | string        | null: false |
-| prepare_date_id  | datetime      | null: false |
+| deliver_fee_id   | integer       | null: false |
+| prepare_date_id  | integer       | null: false |
 | user             | references    |null: false, foreign_key: true|
 
 
@@ -46,18 +45,18 @@ has_one :order
 | Column                        | Type       | Options      |
 | ----------------------------- | ---------- | ------------ |
 | post_code                     | string     | null: false  |
-| prefecture_id                 | string     | null: false  |
+| consignor_area                | reference  | null: false  |
 | city                          | string     | null: false  |
 | town                          | string     | null: false  |
 | number                        | string     | null: false  |
 | building_name                 | string     |              |
-| phone_number                  | integer    | null: false  |
-| orders                        | reference  |null: false, foreign_key: true |
+| phone_number                  | string     | null: false  |
+| order                         | reference  |null: false, foreign_key: true |
 
 
 ### Association
 belongs_to :order
-belongs_to :product
+
 
 
 
@@ -65,8 +64,8 @@ belongs_to :product
 
 | Column                        | Type       | Options                      |
 | ----------------------------- | ---------- | ---------------------------- |
-| user_id                       | reference  |null: false, foreign_key: true|
-| product_id                    | reference  |null: false, foreign_key: true|
+| user                          | reference  |null: false, foreign_key: true|
+| product                       | reference  |null: false, foreign_key: true|
 
 ### Association
 belongs_to :user
