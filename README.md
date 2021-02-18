@@ -27,8 +27,8 @@ has_many :orders
 | product_explain  | text          | null: false |
 | price            | integer       | null: false |
 | category_id      | integer       | null: false |
-| condition_id     | string        | null: false |
-| consignor_area_id| string        | null: false |
+| condition_id     | integer        | null: false |
+| consignor_area_id| integer       | null: false |
 | deliver_fee_id   | integer       | null: false |
 | prepare_date_id  | integer       | null: false |
 | user             | references    |null: false, foreign_key: true|
@@ -45,9 +45,8 @@ has_one :order
 | Column                        | Type       | Options      |
 | ----------------------------- | ---------- | ------------ |
 | post_code                     | string     | null: false  |
-| consignor_area                | reference  | null: false  |
-| city                          | string     | null: false  |
-| town                          | string     | null: false  |
+| consignor_area_id             | reference  | null: false  |
+| city_town                     | string     | null: false  |
 | number                        | string     | null: false  |
 | building_name                 | string     |              |
 | phone_number                  | string     | null: false  |
