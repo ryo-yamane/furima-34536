@@ -11,7 +11,6 @@ RSpec.describe User, type: :model do
           @user.password_confirmation = "1q1q1q1q"
           expect(@user).to be_valid
         end
-
         it '全ての情報があれば登録できる'do
           expect(@user.valid?).to eq true
          end
