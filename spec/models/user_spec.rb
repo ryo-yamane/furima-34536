@@ -13,15 +13,7 @@ RSpec.describe User, type: :model do
         end
 
         it '全ての情報があれば登録できる'do
-          @user.nickname = "test"
-          @user.email = "test1@test"
-          @user.password = "1q1q1q1q"
-          @user.password_confirmation = "1q1q1q1q"
-          @user.first_name = "山田"
-          @user.last_name = "太郎"
-          @user.first_name_kana = "ヤマダ"
-          @user.last_name_kana = "タロウ"
-          @user.birthday = "1999-09-09"
+          expect(@user.valid?).to eq true
          end
       end
 
@@ -129,6 +121,12 @@ RSpec.describe User, type: :model do
       it 'Passwordが半角数字だけでは登録でき無いこと' do
         @user.password = "aaaaaa"
         @user.password_confirmation = "aaaaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
+      it '全角では登録できないこと' do
+        @user.password = "ＡＡＡＡＡＡＡＡ"
+        @user.password_confirmation = "ＡＡＡＡＡＡＡＡ"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is invalid")
       end
