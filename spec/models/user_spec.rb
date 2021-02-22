@@ -5,6 +5,28 @@ RSpec.describe User, type: :model do
   end
 
   describe 'ユーザー新規登録' do
+      context '新規登録できる時' do
+        it 'パスワードは6文字以上で半角英数の混合が必須且つ確認用と一致すれば登録できる' do
+          @user.password = "1q1q1q1q"
+          @user.password_confirmation = "1q1q1q1q"
+          expect(@user).to be_valid
+        end
+
+        it '全ての情報があれば登録できる'do
+          @user.nickname = "test"
+          @user.email = "test1@test"
+          @user.password = "1q1q1q1q"
+          @user.password_confirmation = "1q1q1q1q"
+          @user.first_name = "山田"
+          @user.last_name = "太郎"
+          @user.first_name_kana = "ヤマダ"
+          @user.last_name_kana = "タロウ"
+          @user.birthday = "1999-09-09"
+         end
+      end
+
+
+
     context '新規登録でき無い時' do
       it 'nicknameが空では登録でき無い' do
         @user.nickname = ''
@@ -22,16 +44,12 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it 'パスワードは5文字以下では登録でき無い' do
-        @user.password = "00000"
-        @user.password_confirmation = "00000"
+        @user.password = "000qq"
+        @user.password_confirmation = "000qq"
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
-      it 'パスワードは6文字以上で半角英数の混合が必須且つ確認用と一致すれば登録できる' do
-        @user.password = "1q1q1q1q"
-        @user.password_confirmation = "1q1q1q1q"
-        expect(@user).to be_valid
-      end
+      
       it 'パスワードは確認用を含めて２回入力が必要' do
         @user.password_confirmation = ''
         @user.valid?
@@ -96,6 +114,23 @@ RSpec.describe User, type: :model do
         @user.birthday = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Birthday can't be blank")
+      end
+      it 'emailに＠が含まれてい無いと登録でき無いこと' do
+        @user.email = "aa.aa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
+      it 'Passwordが半角英字だけでは登録でき無いこと' do
+        @user.password = "1111111"
+        @user.password_confirmation = "1111111"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
+      it 'Passwordが半角数字だけでは登録でき無いこと' do
+        @user.password = "aaaaaa"
+        @user.password_confirmation = "aaaaaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
       end
     end
   end
