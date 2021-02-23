@@ -13,7 +13,7 @@ class Product < ApplicationRecord
 
   validates :product_name,      presence: true
   validates :product_explain,   presence: true
-  validates :price,             presence: true
+  validates :price,             presence: true, numericality: {greater_than_or_equal_to: 300,less_than: 100000000 }
   validates :category_id,       numericality: { other_than: 1 }
   validates :condition_id,      numericality: { other_than: 1 }
   validates :consignor_area_id, numericality: { other_than: 1 }
