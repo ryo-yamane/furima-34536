@@ -91,7 +91,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana can't be blank")
       end
-      it 'ユーザー本名m苗字のフリガナは全角（カタカナ）でないと登録でき無い' do
+      it 'ユーザー本名苗字のフリガナは全角（カタカナ）でないと登録でき無い' do
           @user.last_name_kana = "かな"
           @user.valid?
           expect(@user.errors.full_messages).to include("Last name kana カタカナでお願いします")
