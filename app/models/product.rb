@@ -1,10 +1,10 @@
 class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :Category
-  belongs_to :Condition
-  belongs_to :Consignor_area
-  belongs_to :Deliver_fee
-  belongs_to :Prepare_date
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :consignor_area
+  belongs_to :deliver_fee
+  belongs_to :prepare_date
 
   belongs_to :user
   has_one_attached :image
