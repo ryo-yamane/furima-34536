@@ -53,10 +53,45 @@ describe '商品登録' do
         @product.valid?
         expect(@product.errors.full_messages).to include("Price is not a number")
       end
-      it "販売価格が300円以下は登録でき無い" do
+      it "販売価格が299円以下は登録でき無い" do
         @product.price = "50"
         @product.valid?
         expect(@product.errors.full_messages).to include("Price must be greater than or equal to 300")
+      end
+      it "販売価格が10,000,000円以上は登録でき無い" do
+        @product.price = "10000000000"
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Price must be less than 100000000")
+      end
+      it "販売価格が半角英数混合は登録でき無い" do
+        @product.price = "50abs"
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Price is not a number")
+      end
+      it "販売価格が半角英語だけは登録でき無い" do
+        @product.price = "abcghr"
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Price is not a number")
+      end
+      it "カテゴリーが『--』では登録でき無い" do
+        @product.category_id = "1"
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Category must be other than 1")
+      end
+      it "配送料負担が『--』では登録でき無い" do
+        @product.deliver_fee_id = "1"
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Deliver fee must be other than 1")
+      end
+      it "発送元の地域が『--』では登録でき無い" do
+        @product.consignor_area_id = "1"
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Consignor area must be other than 1")
+      end
+      it "発送までの日にちが『--』では登録でき無い" do
+        @product.prepare_date_id = "1"
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Prepare date must be other than 1")
       end
     end
   end
