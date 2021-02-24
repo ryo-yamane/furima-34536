@@ -17,6 +17,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def show
+    @product = Product.includes(:user).find(params[:id])
+  end
+
   private
 
   def product_params
