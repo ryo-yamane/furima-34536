@@ -10,17 +10,16 @@ class Product < ApplicationRecord
   has_one_attached :image
 
   with_options presence: true do
-    validates :product_name      
-    validates :product_explain   
-    validates :price,   numericality: { greater_than_or_equal_to: 300, less_than: 100_000_000 }  
+    validates :product_name
+    validates :product_explain
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than: 100_000_000 }
   end
 
-  
   with_options numericality: { other_than: 1 } do
-    validates :category_id       
-    validates :condition_id      
-    validates :consignor_area_id 
-    validates :deliver_fee_id    
+    validates :category_id
+    validates :condition_id
+    validates :consignor_area_id
+    validates :deliver_fee_id
     validates :prepare_date_id
-  end   
+  end
 end
