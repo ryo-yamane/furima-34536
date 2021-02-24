@@ -3,11 +3,11 @@
         <%= link_to image_tag(product.image,class: "item-img"), product_path(product.id), method: :get  %>
         <div class='item-info'>
           <h3 class='item-name'>
-            <%= link_to "#{product.product_name}"%>
+            <%= link_to "#{product.product_name}", product_path(product.id), method: :get %>
           </h3>
           <div class='item-price'>
             <span><%= link_to "#{product.price}円" %><br>
-            <%= link_to "#{product.deliver_fee.name}" %></span>
+            <%= link_to "#{product.deliver_fee.name}" , product_path(product.id), method: :get %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
