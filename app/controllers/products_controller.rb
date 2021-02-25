@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
        @product.update(product_params)
        redirect_to product_path
     else
-      render :edit
+      render :show
     end
   end
 
@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
       @product.destroy
       redirect_to root_path
     else
-      render :edit
+      render :show
     end
 
   end
