@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
       @product.destroy
       redirect_to root_path
     else
-      ewnder :edit
+      render :edit
     end
 
   end
