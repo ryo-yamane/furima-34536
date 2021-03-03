@@ -126,8 +126,6 @@
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
    <%= render partial: "product", collection: @products%>
-    
-
 
     <% if @products.length == 0 %>
       <li class='list'>
