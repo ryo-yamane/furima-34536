@@ -126,9 +126,10 @@
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
    <%= render partial: "product", collection: @products%>
-    <% if @products.length == 0 %>
     
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
+
+
+    <% if @products.length == 0 %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
@@ -147,7 +148,6 @@
         <% end %>
       </li>
       <% end %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
     </ul>
   </div>
   <%# /商品一覧 %>
