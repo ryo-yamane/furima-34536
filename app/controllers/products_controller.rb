@@ -1,10 +1,11 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit ,:update]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :user_conditions, only: [:edit, :update, :show]
+  before_action :user_conditions, only: [:edit, :update]
 
 
   def index
+    
     @products = Product.all.order('created_at DESC')
   end
 
@@ -13,6 +14,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+ 
     @product = Product.new(product_params)
     if @product.save
       redirect_to root_path

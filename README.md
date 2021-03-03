@@ -61,8 +61,8 @@ belongs_to :order
 
 ## orders テーブル
 
-| Column                        | Type       | Options                      |
-| ----------------------------- | ---------- | ---------------------------- |
+| Column                        | Type        |Options                       |
+| ----------------------------- | ----------  | ---------------------------- |
 | user                          | references  |null: false, foreign_key: true|
 | product                       | references  |null: false, foreign_key: true|
 
