@@ -1,15 +1,17 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, expect: [:create, :index]
+  before_action :authenticate_user!, only: [:create, :index]
   before_action :set_product, only: [:index, :create]
+  
 
   def index
-    @order_purchase = OrderPurchase.new
-    if @product.order.present?
-      redirect_to root_path
-    else @current_user == @product.user
-      redirect_to root_path
-    end
-
+    @order_purchase = OrderPurchase.new 
+     unless @product.order.present?
+        if @product.user == current_user
+            redirect_to root_path
+        end
+      else  
+        redirect_to root_path
+      end
   end
 
   def create
