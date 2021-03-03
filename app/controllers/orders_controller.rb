@@ -11,12 +11,14 @@ class OrdersController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
     @order_purchase = OrderPurchase.new(order_params)
-    if @order_purchase.valid?
-      pay_item
-      @order_purchase.save
-      redirect_to root_path
-    else
-      render 'index'
+    unless @product.order.present?
+      if @order_purchase.valid? 
+        pay_item
+        @order_purchase.save
+        redirect_to root_path
+      else
+        render 'index'
+      end
     end
   end
 
