@@ -4,7 +4,7 @@ class OrderPurchase
                 :product_id, :token
 
   with_options presence: true do
-    validates :post_code
+    validates :post_code,   format: {with: /\A[0-9]{3}-[0-9]{4}\z/ }
     validates :consignor_area_id, numericality: { other_than: 1 }
     validates :city_town
     validates :number
