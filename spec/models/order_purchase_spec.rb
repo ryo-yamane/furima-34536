@@ -46,5 +46,25 @@ RSpec.describe OrderPurchase, type: :model do
       @order_purchase.valid?
       expect(@order_purchase.errors.full_messages).to include("Phone number can't be blank")
     end
-  end
+    it '電話番号が１２桁以上では登録できない'do
+      @order_purchase.phone_number = "123456789012"
+      @order_purchase.valid?
+      expect(@order_purchase.errors.full_messages).to include("Phone number is invalid")
+    end
+    it '電話番号が英数混合では登録できない'do
+      @order_purchase.phone_number = "1234567qqqqqq"
+      @order_purchase.valid?
+      expect(@order_purchase.errors.full_messages).to include("Phone number is invalid")
+    end
+    it 'user_idが空では登録できない'do
+      @order_purchase.user_id = ""
+      @order_purchase.valid?
+      expect(@order_purchase.errors.full_messages).to include("User can't be blank")
+    end
+    it 'product_idが空では登録できない'do
+      @order_purchase.product_id = ""
+      @order_purchase.valid?
+      expect(@order_purchase.errors.full_messages).to include("Product can't be blank")
+    end
+ end
 end
