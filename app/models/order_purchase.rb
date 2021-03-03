@@ -8,7 +8,7 @@ class OrderPurchase
     validates :consignor_area_id, numericality: { other_than: 1 }
     validates :city_town
     validates :number
-    validates :phone_number
+    validates :phone_number, format: {with: /\A\d{11}\z/ }
     validates :user_id
     validates :product_id
     validates :token

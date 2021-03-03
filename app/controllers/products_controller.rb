@@ -31,10 +31,14 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.update(product_params)
-      redirect_to product_path
+    unless @product.order.present?
+      if @product.update(product_params)
+        redirect_to product_path
+     else
+       render :edit
+     end
     else
-      render :edit
+      redirect_to root_path
     end
   end
 
