@@ -6,6 +6,8 @@ class OrdersController < ApplicationController
     @order_purchase = OrderPurchase.new
     if @product.order.present?
       redirect_to root_path
+    else @current_user == @product.user
+      redirect_to root_path
     end
 
   end
