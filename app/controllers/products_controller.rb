@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :user_conditions, only: [:edit, :update]
+  before_action :user_conditions, only: [:edit, :update, :detory]
   before_action :set_user_conditions, only: [:update, :edit]
   
 
@@ -29,8 +29,8 @@ class ProductsController < ApplicationController
   end
 
   def update
-      if
-        @product.update(product_params)
+      if @product.update(product_params)
+       redirect_to product_path
       else 
        render :edit
       end

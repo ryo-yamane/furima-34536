@@ -1,17 +1,12 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:create, :index]
   before_action :set_product, only: [:index, :create]
+  before_action :set_conditions, only: [:index, :create]
   
 
   def index
     @order_purchase = OrderPurchase.new 
-     unless @product.order.present?
-        if @product.user == current_user
-            redirect_to root_path
-        end
-      else  
-        redirect_to root_path
-      end
+     
   end
 
   def create
@@ -44,5 +39,15 @@ class OrdersController < ApplicationController
 
   def set_product
     @product = Product.find(params[:product_id])
+  end
+
+  def set_conditions
+    unless @product.order.present?
+      if @product.user == current_user
+          redirect_to root_path
+      end
+    else  
+      redirect_to root_path
+    end
   end
 end
