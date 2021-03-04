@@ -31,9 +31,9 @@ RSpec.describe OrderPurchase, type: :model do
       expect(@order_purchase.errors.full_messages).to include("Post code is invalid")
     end
     it 'consignor_areaを選択していないと保存できないこと' do
-      @order_purchase.consignor_area_id = ""
+      @order_purchase.consignor_area_id = "1"
       @order_purchase.valid?
-      expect(@order_purchase.errors.full_messages).to include("Consignor area can't be blank")
+      expect(@order_purchase.errors.full_messages).to include("Consignor area must be other than 1")
     end
     it 'city_townが空では保存できないこと' do
       @order_purchase.city_town = ""
@@ -54,12 +54,12 @@ RSpec.describe OrderPurchase, type: :model do
     it '電話番号が１２桁以上では登録できない'do
       @order_purchase.phone_number = "123456789012"
       @order_purchase.valid?
-      expect(@order_purchase.errors.full_messages).to include("Phone number is invalid")
+      expect(@order_purchase.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
     end
     it '電話番号が英数混合では登録できない'do
-      @order_purchase.phone_number = "1234567qqqqqq"
+      @order_purchase.phone_number = "1234qqqq"
       @order_purchase.valid?
-      expect(@order_purchase.errors.full_messages).to include("Phone number is invalid")
+      expect(@order_purchase.errors.full_messages).to include("Phone number is not a number")
     end
     it 'user_idが空では登録できない'do
       @order_purchase.user_id = ""
@@ -70,6 +70,11 @@ RSpec.describe OrderPurchase, type: :model do
       @order_purchase.product_id = ""
       @order_purchase.valid?
       expect(@order_purchase.errors.full_messages).to include("Product can't be blank")
+    end
+    it 'tokenが空では登録できない'do
+      @order_purchase.token = ""
+      @order_purchase.valid?
+      expect(@order_purchase.errors.full_messages).to include("Token can't be blank")
     end
   end
  end

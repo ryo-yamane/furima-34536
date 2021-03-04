@@ -1,6 +1,6 @@
 class OrderPurchase
   include ActiveModel::Model
-  attr_accessor :post_code, :consignor_area_id, :city_town, :number, :building_name, :phone_number, :order, :user_id,
+  attr_accessor :post_code, :consignor_area_id, :city_town, :number, :building_name, :phone_number, :user_id,
                 :product_id, :token
 
   with_options presence: true do
@@ -8,7 +8,7 @@ class OrderPurchase
     validates :consignor_area_id, numericality: { other_than: 1 }
     validates :city_town
     validates :number
-    validates :phone_number, length: { maximum: 11 }
+    validates :phone_number, length: { maximum: 11 } ,numericality: true
     validates :user_id
     validates :product_id
     validates :token
