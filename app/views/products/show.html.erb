@@ -8,11 +8,11 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @product.image ,class:"item-box-img" %>
-      <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <%#<div class="sold-out">
+      <% if @product.order.present? %>
+      <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
-      <%# //商品が売れている場合は、sold outを表示しましょう %>
+      <% end %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -22,21 +22,20 @@
         <%= "#{@product.deliver_fee.name}" %>
       </span>
     </div>
-
+   <% unless @product.order.present? %>
     <% if user_signed_in? %>
       <% if @product.user == current_user %> 
         <%= link_to "商品の編集", edit_product_path, method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
         <%= link_to "削除", product_path, method: :delete, class:"item-destroy" %>
       <% else %>
-        <%# 商品が売れていない場合はこちらを表示しましょう %>
-        <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
-        <%# //商品が売れていない場合はこちらを表示しましょう %>
+        <%= link_to "購入画面に進む", product_orders_path(@product.id), class:"item-red-btn"%>
       <% end %>
     <% end %>
+   <% end %> 
    
     <div class="item-explain-box">
-      <span><%= "商品説明" %></span>
+      <span><%= "#{@product.product_explain}" %></span>
     </div>
     <table class="detail-table">
       <tbody>

@@ -71,17 +71,17 @@ app/assets/stylesheets/items/new.css %>
           配送料の負担
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:deliver_fee_id, Deliver_fee.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
+        <%= f.collection_select(:deliver_fee_id, DeliverFee.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:consignor_area_id, Consignor_area.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+        <%= f.collection_select(:consignor_area_id, ConsignorArea.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
         <div class="weight-bold-text">
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:prepare_date_id, Prepare_date.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
+        <%= f.collection_select(:prepare_date_id, PrepareDate.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
       </div>
     </div>
     <%# /配送について %>
