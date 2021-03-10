@@ -2,6 +2,7 @@ class RegistrationsController < ApplicationController
   def index
   end
 
-  def show
+  def indexfinish
   end
+  
 end

@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   resources :products do
   resources :orders, only: [:index, :create]
   end
-  resources :registrations, only: [:index]
+  resources :registrations, only: [:index] do
+
+    collection do
+      get 'indexfinish'
+    end
+  end
 
 end
