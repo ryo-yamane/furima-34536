@@ -158,3 +158,56 @@
   text-align: right;
   cursor: pointer;
 }
+
+/*ここから下はSNS認証*/
+
+
+
+.form-group-registration {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.form-text-wrap {
+  width: 100%;
+  height: 20%;
+}
+
+.form-text-registration {
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid transparent;
+  line-height: 48px;
+  padding: 10px 30px;
+  cursor: pointer;
+  text-align: center;
+  transition: all ease-out .3s;
+}
+
+.mail{
+  width:30%;
+  background-color: #ea352d;
+  padding: 20px 40px;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.facebook{
+  width:30%;
+  background-color: #385185;
+  padding: 20px 40px;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.google{
+  width:30%;
+  background-color: #fff;
+  padding: 20px 40px;
+  border : 1px solid black;
+  color: #000;
+  border-radius: 10px;
+}
