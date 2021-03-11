@@ -205,11 +205,12 @@
 
 .google{
   width: 100%;
-  background-color: #fff;
+  background-color: #fff ;
   padding: 20px 40px;
   border : 1px solid black;
   color: #000;
   border-radius: 10px;
+  
 }
 
 /*ログイんページ*/
@@ -238,4 +239,7 @@
   color: #fff;
   border-radius: 10px;
   font-size: 14px;
+}
+.bi {
+  margin-right: 10px;
 }
