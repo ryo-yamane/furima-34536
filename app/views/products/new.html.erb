@@ -20,12 +20,15 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :image, id:"item-image" %>
+        <%= f.file_field :images, name: 'product[images][]', id:"item-image" %>
          <div id="image-list"></div>
+         <canvas id="canvas" width="0" height="0"></canvas>
       </div>
     </div>
     <%# /出品画像 %>
-   
+   <%@product.images.each do |image|%>
+    <%= image_tag image, class: 'images' %>
+    <% end %>
     <%# 商品名と商品説明 %>
     <div class="new-items">
       <div class="weight-bold-text">
@@ -144,6 +147,10 @@
     </div>
     <%# /下部ボタン %>
   </div>
+  <% end %>
+
+  <% @product.images.each do |image|%>
+    <%= image_tag image, class: 'images' %>
   <% end %>
 
   <footer class="items-sell-footer">
