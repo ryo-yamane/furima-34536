@@ -16,7 +16,7 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
       // ファイル選択ボタンを生成
       const inputHTML = document.createElement('input')
       inputHTML.setAttribute('id', `message_image_${imageElementNum}`)
-      inputHTML.setAttribute('name', 'message[images][]')
+      inputHTML.setAttribute('name', 'product[images][]')
       inputHTML.setAttribute('type', 'file')
 
       // 生成したHTMLの要素をブラウザに表示させる

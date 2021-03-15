@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    
     @product = Product.new(product_params)
     if @product.save
       redirect_to root_path
