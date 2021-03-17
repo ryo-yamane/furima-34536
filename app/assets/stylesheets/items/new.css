@@ -227,3 +227,9 @@
 .inc {
   font-size: 13px;
 }
+
+#child {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}

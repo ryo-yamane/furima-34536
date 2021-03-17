@@ -1,10 +1,12 @@
 <li class='list'>
-        <%= link_to image_tag(product.image,class: "item-img"), product_path(product.id)  %> 
+        <%= link_to image_tag(product.images[0],class: "item-img"), product_path(product.id)  %> 
           <% if product.order.present? %>
           <div class="sold-out">
           <span>Sold Out!!</span>
           </div>
-          
+          <div class="messages">
+            <%= image_tag image, class:'images' %>
+          </div>          
         <% end %>
         <div class='item-info'>
           <h3 class='item-name'>
