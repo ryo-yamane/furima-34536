@@ -31,7 +31,7 @@
   width: 50%;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 50px auto 150px auto;
   padding-top: 20px;
 }
 
@@ -190,7 +190,7 @@
 .mail{
   width: 100%;
   background-color: #ea352d;
-  padding: 20px 40px;
+  padding: 20px 80px;
   color: #fff;
   border-radius: 10px;
 }
@@ -198,20 +198,21 @@
 .facebook{
   width: 100%;
   background-color: #385185;
-  padding: 20px 40px;
-  color: #fff;
+  padding: 20px 92px;
+  color: #fff ;
   border-radius: 10px;
 }
 
 .google{
   width: 100%;
   background-color: #fff ;
-  padding: 20px 40px;
+  padding: 20px 101px;
   border : 1px solid black;
   color: #000;
   border-radius: 10px;
   
 }
+
 
 /*ログイんページ*/
 
@@ -231,7 +232,7 @@
   font-weight: normal;
 }
 
-.new-regi{
+/*.new-regi{
   width: 100%;
   background-color: #0099e8;
   padding: 20px 40px;
@@ -240,6 +241,64 @@
   border-radius: 10px;
   font-size: 14px;
 }
+*/
 .bi {
   margin-right: 10px;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%;/*rem算出をしやすくするために*/
+}
+
+.btn,
+a.btn,
+button.btn {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  border-radius: 0.5rem;
+}
+
+a.btn--orange {
+  color: #fff;
+  background-color: #eb6100;
+}
+
+a.btn--orange:hover {
+  color: #fff;
+  background: #f56500;
+}
+
+a.btn-c {
+  font-size: 14px;
+  position: relative;
+  padding: 1.5rem 4rem 1.5rem 4rem;
+  border: 1px solid;
+}
+
+a.btn-c i.fa {
+  margin-right: 1rem;
 }
