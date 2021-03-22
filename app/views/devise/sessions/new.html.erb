@@ -4,34 +4,40 @@
 <div class='form-wrap'>
   <div class='form-header2'>
       <p>アカウントをお持ちでない方はこちら</p>
-      <%= link_to '新規会員登録', registrations_path, class:"new-regi"%>
+      
+      <div>
+      <%= link_to registrations_path, class:"btn btn-c btn--green btn--cubic new-regi" do %>
+          <span>新規会員登録</span>
+          <% end %>
+          </div>
     </div>
   
   <div class='login-flash-message'>
     <%= flash[:notice] %>
     <%= flash[:alert] %>
   </div>
-  <div class="form-group-registration">
-      <div class='form-text-wrap'>
-        <div class="form-text-registration">
-          <%= link_to 'メールアドレスでログイン', new_user_registration_path, class:"mail"%>
-        </div>
-      </div>
-    </div>
+
     <div class="form-group-registration">
       <div class='form-text-wrap'>
         <div class="form-text-registration">
-          <%= link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, method: :post, class:"facebook" %>
-      </div>
+          <%= link_to user_facebook_omniauth_authorize_path, method: :post, class:"btn btn-c btn--green btn--cubic facebook" do %>
+            <i class="bi bi-facebook"></i>
+            <span>facebookでログイン</span>
+          <% end %>
+        </div>
       </div>    
     </div>
-     <div class="form-group-registration">
-      <div class='form-text-wrap'>
-        <div class="form-text-registration">
-          <%= link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post, class:"google" %>
+
+      <div class="form-group-registration">
+        <div class='form-text-wrap'>
+          <div class="form-text-registration">
+          <%= link_to  user_google_oauth2_omniauth_authorize_path, method: :post, class:"btn btn-c btn--green btn--cubic google" do %>
+           <i class="bi bi-google"></i>
+           <span>Googleでログイン</span>
+          <% end %>
         </div>
        </div>
-    </div>
+     </div> 
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">メールアドレス</label>
